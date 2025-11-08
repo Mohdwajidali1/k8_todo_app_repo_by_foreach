@@ -1,11 +1,11 @@
 rgs = {
   rg1 = {
-    name       = "rg-dev"
+    name       = "rg-prod"
     location   = "centralindia"
     managed_by = "terraform"
     tags = {
       owner       = "Hashicorp"
-      environment = "dev"
+      environment = "prod"
     }
   }
 }
@@ -22,16 +22,16 @@ rgs = {
 
 #    tags = {
 #       owner       = "Hashicorp"
-#       environment = "dev"
+#       environment = "prod"
 #     }
 #   }
 # }
 
 stgs = {
   storage01 = {
-    name                       = "devstorage01"
+    name                       = "prodstorage01"
     location                   = "Central India"
-    resource_group_name        = "rg-dev"
+    resource_group_name        = "rg-prod"
     account_tier               = "Standard"
     account_kind               = "StorageV2"
     account_replication_type   = "LRS"
@@ -40,20 +40,20 @@ stgs = {
     is_hns_enabled             = false
     sftp_enabled               = false
     tags = {
-      Environment = "dev"
-      Owner       = "devOpsTeam"
+      Environment = "prod"
+      Owner       = "prodOpsTeam"
     }
   }
 
   storage02 = {
-    name                     = "devstorage02"
+    name                     = "prodstorage02"
     location                 = "Central India"
-    resource_group_name      = "rg-dev"
+    resource_group_name      = "rg-prod"
     account_tier             = "Premium"
     account_replication_type = "ZRS"
     access_tier              = "Hot"
     tags = {
-      Environment = "dev"
+      Environment = "Prod"
       Owner       = "InfraTeam"
     }
   }
@@ -61,8 +61,8 @@ stgs = {
 
 public_ips = {
   pip1 = {
-    name                    = "dev-public-ip-01"
-    resource_group_name     = "rg-dev"
+    name                    = "prod-public-ip-01"
+    resource_group_name     = "rg-prod"
     location                = "Central India"
     allocation_method       = "Static"
     sku                     = "Standard"
@@ -70,21 +70,21 @@ public_ips = {
     ip_version              = "IPv4"
     idle_timeout_in_minutes = 10
     tags = {
-      Environment = "dev"
-      Owner       = "devOpsTeam"
+      Environment = "prod"
+      Owner       = "prodOpsTeam"
     }
   }
 
   pip2 = {
-    name                = "dev-public-ip-02"
-    resource_group_name = "rg-dev"
+    name                = "prod-public-ip-02"
+    resource_group_name = "rg-prod"
     location            = "Central India"
     allocation_method   = "Static"
     sku                 = "Standard"
     sku_tier            = "Global"
-    domain_name_label   = "devweb01"
+    domain_name_label   = "prodweb01"
     tags = {
-      Environment = "dev"
+      Environment = "Prod"
       Owner       = "InfraTeam"
     }
   }
@@ -92,9 +92,9 @@ public_ips = {
 
 key_vaults = {
   kv1 = {
-    kv_name   = "kv-demo-dev01"
+    kv_name   = "kv-demo-prod01"
     location  = "Central India"
-    rg_name   = "rg-dev"
+    rg_name   = "rg-prod"
     tenant_id = "41f65365-4083-4b66-9451-eb3d952f7482"
     sku_name  = "standard"
           access_policies = [
@@ -106,7 +106,7 @@ key_vaults = {
         }
       ]
     tags = {
-      Environment = "dev"
+      Environment = "prod"
       ManagedBy   = "Terraform"
 
     }
@@ -114,11 +114,11 @@ key_vaults = {
 }
 
 kubernetes_clusters = {
-  dev = {
-    name                = "aks-dev"
+  prod = {
+    name                = "aks-prod"
     location            = "Central India"
-    resource_group_name = "rg-dev"
-    dns_prefix          = "aksdev"
+    resource_group_name = "rg-prod"
+    dns_prefix          = "aksprod"
     kubernetes_version  = "1.29.0"
     sku_tier            = "Free"
 
@@ -149,7 +149,7 @@ kubernetes_clusters = {
     http_application_routing_enabled = false
 
     tags = {
-      Environment = "dev"
+      Environment = "prod"
       ManagedBy   = "Terraform"
     }
   }
@@ -160,14 +160,14 @@ kubernetes_clusters = {
 acr = {
   acr1 = {
     acr_name            = "myacr001"
-    resource_group_name = "rg-dev"
+    resource_group_name = "rg-prod"
     location            = "Central India"
     georeplications = [
       {
         location                = "West Europe"
         zone_redundancy_enabled = true
       tags = {
-      Environment = "dev"
+      Environment = "prod"
       ManagedBy   = "Terraform"
     }
       }
@@ -178,8 +178,8 @@ acr = {
 
 sql_servers = {
   sql1 = {
-    name                         = "my-sqlserver-dev"
-    resource_group_name          = "rg-dev"
+    name                         = "my-sqlserver-prod"
+    resource_group_name          = "rg-prod"
     location                     = "Central India"
     administrator_login          = "sqladmin"
     administrator_login_password = "P@ssword123!"
@@ -188,7 +188,7 @@ sql_servers = {
       object_id      = "08f89125-8f27-4c8a-b268-972a8f6e7bfe"
     }
    tags = {
-      Environment = "dev"
+      Environment = "prod"
       ManagedBy   = "Terraform"
     }
   }
